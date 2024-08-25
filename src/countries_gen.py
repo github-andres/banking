@@ -1,0 +1,31 @@
+import numpy as np
+
+class CountriesGen:
+     
+    def create_countries():
+     
+        massive_countries = np.random.triangular(1400, 1500, 1600, size=2)
+        extra_large_countries = np.random.triangular(200, 280, 340, size=5)
+        large_countries = np.random.triangular(75, 90, 140, size=15)
+        medium_countries = np.random.triangular(30, 40, 70, size=60)
+        small_countries = np.random.triangular(5, 12, 25, size=22)
+        tiny_countries = np.random.triangular(2, 3, 3.5, size=5)
+        xx_small_countries = np.random.triangular(.25, .45, 1, size=14)
+        
+        countries = np.concatenate([massive_countries, extra_large_countries, large_countries, medium_countries, small_countries, tiny_countries, xx_small_countries])
+        
+        return countries
+    
+    def __init__(self):
+        self.population = np.random.choice(CountriesGen.create_countries())
+        self.female_perc = np.random.triangular(.48, .51, .55)
+        
+        
+
+instances = [CountriesGen() for _ in range(192)]
+
+countries_dict = {}
+
+for i, instance in enumerate(instances):
+    countries_dict[f"country_{i}"] = instance
+    
