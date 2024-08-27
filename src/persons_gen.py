@@ -1,10 +1,12 @@
 import numpy as np
 from datetime import datetime, timedelta
 
+
 class PersonGen:
        
     def __init__(self, dict_item):
-        self.nationality = dict_item[0]
+        self.id = None
+        self.nationality = [dict_item[0],]
         self.gender = "M" if np.random.rand() > dict_item[1].female_perc else "F"
         self.age_at_registration = np.random.triangular(0, dict_item[1].avg_age, dict_item[1].life_exp)
         self.registed_mother = None
@@ -18,6 +20,9 @@ class PersonGen:
         marital_status_list = ["single", "married", "divorced", "separated", "widower/widow"]
         if new_status in marital_status_list:
             self.marital_status = new_status
+
+    
+      
 
 if __name__ == "__main__":
     pass
